@@ -1,15 +1,12 @@
-import time #Iwish
 import os
-import json
-import openai
-import requests
 import streamlit as st
-from streamlit_lottie import st_lottie
 from tenacity import (
     retry,
     stop_after_attempt,
     wait_random_exponential,
 )
+import google.generativeai as genai
+
 
 def main():
     # Set page configuration
