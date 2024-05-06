@@ -55,31 +55,26 @@ def main():
 
     # Input section
     with st.expander("**PRO-TIP** - Provide the key features, advantages, and benefits of your product or service", expanded=True):
-        col1, space, col2 = st.columns([5, 0.1, 5])
-        with col1:
-            fab_product_name = st.text_input('**Enter Product/Service Name**')
-        with col2:
-            fab_product_details = st.text_input(f'**Describe Your Offers ?** (List the Features of product)')
-        col1, space, col2 = st.columns([5, 0.1, 5])
-        with col1:
-            fab_benefits = st.text_input(f"**Mention Benefits or Results Experienced by the Customer:**")
-        with col2:
-            # Generate FAB Copy button
-            if st.button('**Get FAB Copy**'):
-                # Validate input fields
-                if validate_input(fab_product_name, "Product/Service Name") and \
-                    validate_input(fab_product_details, "Description") and \
-                    validate_input(fab_benefits, "Benefits"):
+        fab_product_name = st.text_input('**Enter Product/Service Name**')
+        fab_product_details = st.text_input(f'**Describe Your Offers ?** (List the Features of product)')
+        fab_benefits = st.text_input(f"**Mention Benefits or Results Experienced by the Customer:**")
+        
+        # Generate FAB Copy button
+        if st.button('**Get FAB Copy**'):
+            # Validate input fields
+            if validate_input(fab_product_name, "Product/Service Name") and \
+                validate_input(fab_product_details, "Description") and \
+                validate_input(fab_benefits, "Benefits"):
 
-                    # Proceed with further processing
-                    with st.spinner("Generating FAB Copy..."):
-                        fab_content = generate_fab_copywrite(fab_product_name, fab_product_details, fab_benefits)
-                        if fab_content:
-                            st.subheader('**🧕 Your FAB Marketing Copy:**')
-                            st.markdown(fab_content)
-                            st.markdown("\n\n\n")
-                        else:
-                            st.error("💥**Failed to generate FAB Copy. Please try again!**")
+                # Proceed with further processing
+                with st.spinner("Generating FAB Copy..."):
+                    fab_content = generate_fab_copywrite(fab_product_name, fab_product_details, fab_benefits)
+                    if fab_content:
+                        st.subheader('**🧕 Your FAB Marketing Copy:**')
+                        st.markdown(fab_content)
+                        st.markdown("\n\n\n")
+                    else:
+                        st.error("💥**Failed to generate FAB Copy. Please try again!**")
 
 
 # Function to validate if the input field is not empty
@@ -124,9 +119,9 @@ def generate_text_with_exception_handling(prompt):
 
         generation_config = {
             "temperature": 1,
-            "top_p": 0.95,
+            "top_p": 0.7,
             "top_k": 0,
-            "max_output_tokens": 8192,
+            "max_output_tokens": 500,
         }
 
         safety_settings = [
