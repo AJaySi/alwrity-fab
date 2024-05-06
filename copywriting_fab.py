@@ -62,10 +62,10 @@ def main():
         with col1:
             fab_product_name = st.text_input('**Enter Product/Service Name**')
         with col2:
-            fab_product_details = st.text_input(f'**Describe *{fab_product_name}* Offers ?** (List the Features of {fab_product_name})')
+            fab_product_details = st.text_input(f'**Describe Your Offers ?** (List the Features of product)')
         col1, space, col2 = st.columns([5, 0.1, 5])
         with col1:
-            fab_benefits = st.text_input(f"**Emphasize the Ultimate Benefits or Results Experienced by the Customer:**")
+            fab_benefits = st.text_input(f"**Mention Benefits or Results Experienced by the Customer:**")
         with col2:
             # Generate FAB Copy button
             if st.button('**Get FAB Copy**'):
@@ -80,6 +80,7 @@ def main():
                         if fab_content:
                             st.subheader('**🧕 Your FAB Marketing Copy:**')
                             st.markdown(fab_content)
+                            st.markdown("\n\n\n")
                         else:
                             st.error("💥**Failed to generate FAB Copy. Please try again!**")
 
